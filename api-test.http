@@ -1,0 +1,135 @@
+# VS Code REST Client test file
+# Extension: humao.rest-client
+# Doc: https://marketplace.windsurf.com/extension/humao/rest-client
+
+@baseUrl = http://127.0.0.1:8000/api
+@json = application/json
+
+###
+# == EGITMENLER ==
+### List
+GET {{baseUrl}}/egitmenler
+Accept: {{json}}
+
+### Show
+GET {{baseUrl}}/egitmenler/1
+Accept: {{json}}
+
+### Create
+POST {{baseUrl}}/egitmenler
+Content-Type: {{json}}
+
+{
+  "ad_soyad": "Ada Lovelace"
+}
+
+### Update
+PUT {{baseUrl}}/egitmenler/1
+Content-Type: {{json}}
+
+{
+  "ad_soyad": "Alan Turing"
+}
+
+### Delete
+DELETE {{baseUrl}}/egitmenler/1
+Accept: {{json}}
+
+
+###
+# == OGRENCILER ==
+### List
+GET {{baseUrl}}/ogrenciler
+Accept: {{json}}
+
+### Show
+GET {{baseUrl}}/ogrenciler/1
+Accept: {{json}}
+
+### Create
+POST {{baseUrl}}/ogrenciler
+Content-Type: {{json}}
+
+{
+  "ad_soyad": "Mehmet Yılmaz"
+}
+
+### Update
+PUT {{baseUrl}}/ogrenciler/1
+Content-Type: {{json}}
+
+{
+  "ad_soyad": "Ayşe Demir"
+}
+
+### Delete
+DELETE {{baseUrl}}/ogrenciler/1
+Accept: {{json}}
+
+
+###
+# == DERSLER ==
+### List
+GET {{baseUrl}}/dersler
+Accept: {{json}}
+
+### Show
+GET {{baseUrl}}/dersler/1
+Accept: {{json}}
+
+### Create
+POST {{baseUrl}}/dersler
+Content-Type: {{json}}
+
+{
+  "ad": "Matematik",
+  "egitmen_id": 1
+}
+
+### Update
+PUT {{baseUrl}}/dersler/1
+Content-Type: {{json}}
+
+{
+  "ad": "Fizik",
+  "egitmen_id": 1
+}
+
+### Delete
+DELETE {{baseUrl}}/dersler/1
+Accept: {{json}}
+
+
+###
+# == NOTLAR ==
+### List
+GET {{baseUrl}}/notlar
+Accept: {{json}}
+
+### Show
+GET {{baseUrl}}/notlar/1
+Accept: {{json}}
+
+### Create
+POST {{baseUrl}}/notlar
+Content-Type: {{json}}
+
+{
+  "ogrenci_id": 1,
+  "ders_id": 1,
+  "not": 85
+}
+
+### Update
+PUT {{baseUrl}}/notlar/1
+Content-Type: {{json}}
+
+{
+  "ogrenci_id": 1,
+  "ders_id": 1,
+  "not": 90
+}
+
+### Delete
+DELETE {{baseUrl}}/notlar/1
+Accept: {{json}}
