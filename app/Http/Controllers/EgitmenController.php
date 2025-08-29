@@ -9,7 +9,18 @@ class EgitmenController extends Controller
 {
     public function index()
     {
-        return response()->json(Egitmen::all());
+        $q = request('q') ?? request('e');
+        if (is_string($q)) {
+            $q = trim($q, "\"' ");
+        }
+
+        $items = Egitmen::query()
+            ->when($q, function ($query, $q) {
+                $query->where('ad_soyad', 'like', "%$q%");
+            })
+            ->get();
+
+        return response()->json($items);
     }
 
     public function store(Request $request)

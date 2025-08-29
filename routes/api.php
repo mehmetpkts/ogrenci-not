@@ -26,6 +26,9 @@ Route::apiResource('dersler', DersController::class)->parameters([
     'dersler' => 'ders',
 ]);
 
+// Alias: birimler -> dersler index
+Route::get('birimler', [DersController::class, 'index']);
+
 Route::apiResource('notlar', NotController::class)->parameters([
     'notlar' => 'not',
 ]);

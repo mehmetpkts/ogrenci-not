@@ -9,7 +9,22 @@ class NotController extends Controller
 {
     public function index()
     {
-        return response()->json(NotModel::all());
+        $q = request('q') ?? request('n');
+        if (is_string($q)) {
+            $q = trim($q, "\"' ");
+        }
+
+        $items = NotModel::query()
+            ->when($q !== null && $q !== '', function ($query) use ($q) {
+                if (is_numeric($q)) {
+                    $query->where('not', (int)$q);
+                } else {
+                    $query->where('not', 'like', "%$q%");
+                }
+            })
+            ->get();
+
+        return response()->json($items);
     }
 
     public function store(Request $request)

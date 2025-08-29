@@ -9,7 +9,18 @@ class OgrenciController extends Controller
 {
     public function index()
     {
-        return response()->json(Ogrenci::all());
+        $q = request('q') ?? request('o');
+        if (is_string($q)) {
+            $q = trim($q, "\"' ");
+        }
+
+        $items = Ogrenci::query()
+            ->when($q, function ($query, $q) {
+                $query->where('ad_soyad', 'like', "%$q%");
+            })
+            ->get();
+
+        return response()->json($items);
     }
 
     public function store(Request $request)

@@ -9,7 +9,18 @@ class DersController extends Controller
 {
     public function index()
     {
-        return response()->json(Ders::all());
+        $q = request('q') ?? request('d');
+        if (is_string($q)) {
+            $q = trim($q, "\"' ");
+        }
+
+        $items = Ders::query()
+            ->when($q, function ($query, $q) {
+                $query->where('ad', 'like', "%$q%");
+            })
+            ->get();
+
+        return response()->json($items);
     }
 
     public function store(Request $request)

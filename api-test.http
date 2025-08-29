@@ -133,3 +133,30 @@ Content-Type: {{json}}
 ### Delete
 DELETE {{baseUrl}}/notlar/1
 Accept: {{json}}
+
+
+###
+# == QUERY EXAMPLES ==
+### Dersler alias: birimler with quoted filter value
+GET {{baseUrl}}/birimler?d="a"
+Accept: {{json}}
+
+### Dersler with q param
+GET {{baseUrl}}/dersler?q="mat"
+Accept: {{json}}
+
+### Egitmenler with e alias
+GET {{baseUrl}}/egitmenler?e="Ada"
+Accept: {{json}}
+
+### Ogrenciler with o alias
+GET {{baseUrl}}/ogrenciler?o="Meh"
+Accept: {{json}}
+
+### Notlar with n alias (numeric equals)
+GET {{baseUrl}}/notlar?n=90
+Accept: {{json}}
+
+### Notlar with n alias (quoted, string-like -> LIKE)
+GET {{baseUrl}}/notlar?n="9"
+Accept: {{json}}
