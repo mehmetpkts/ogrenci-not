@@ -20,7 +20,10 @@ POST {{baseUrl}}/egitmenler
 Content-Type: {{json}}
 
 {
-  "ad_soyad": "Ada Lovelace"
+  "ad_soyad": "Ada Lovelace",
+  "egitmen_no": "E0001",
+  "telefon_numarasi": "05551234567",
+  "okul_email": "ada.lovelace@example.edu"
 }
 
 ### Update
@@ -28,7 +31,10 @@ PUT {{baseUrl}}/egitmenler/1
 Content-Type: {{json}}
 
 {
-  "ad_soyad": "Alan Turing"
+  "ad_soyad": "Alan Turing",
+  "egitmen_no": "E0001",
+  "telefon_numarasi": "05557654321",
+  "okul_email": "alan.turing@example.edu"
 }
 
 ### Delete
@@ -51,7 +57,10 @@ POST {{baseUrl}}/ogrenciler
 Content-Type: {{json}}
 
 {
-  "ad_soyad": "Mehmet Yılmaz"
+  "ad_soyad": "Mehmet Yılmaz",
+  "ogrenci_no": "O20250001",
+  "telefon_numarasi": "05550000000",
+  "okul_email": "mehmet.yilmaz@example.edu"
 }
 
 ### Update
@@ -59,7 +68,10 @@ PUT {{baseUrl}}/ogrenciler/1
 Content-Type: {{json}}
 
 {
-  "ad_soyad": "Ayşe Demir"
+  "ad_soyad": "Ayşe Demir",
+  "ogrenci_no": "O20250001",
+  "telefon_numarasi": "05551111111",
+  "okul_email": "ayse.demir@example.edu"
 }
 
 ### Delete
@@ -115,8 +127,8 @@ POST {{baseUrl}}/notlar
 Content-Type: {{json}}
 
 {
-  "ogrenci_id": 1,
-  "ders_id": 1,
+  "ogrenci_id": 3,
+  "ders_id": 3,
   "not": 85
 }
 

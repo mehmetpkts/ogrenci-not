@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ogrenci;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OgrenciController extends Controller
 {
@@ -27,6 +28,9 @@ class OgrenciController extends Controller
     {
         $data = $request->validate([
             'ad_soyad' => ['required', 'string', 'max:255'],
+            'ogrenci_no' => ['required', 'string', 'max:50', 'unique:ogrenciler,ogrenci_no'],
+            'telefon_numarasi' => ['required', 'string', 'max:11'],
+            'okul_email' => ['required', 'string', 'email', 'max:255', 'unique:ogrenciler,okul_email'],
         ]);
 
         $ogrenci = Ogrenci::create($data);
@@ -42,6 +46,9 @@ class OgrenciController extends Controller
     {
         $data = $request->validate([
             'ad_soyad' => ['required', 'string', 'max:255'],
+            'ogrenci_no' => ['required', 'string', 'max:50', Rule::unique('ogrenciler', 'ogrenci_no')->ignore($ogrenci->id)],
+            'telefon_numarasi' => ['required', 'string', 'max:11'],
+            'okul_email' => ['required', 'string', 'email', 'max:255', Rule::unique('ogrenciler', 'okul_email')->ignore($ogrenci->id)],
         ]);
 
         $ogrenci->update($data);

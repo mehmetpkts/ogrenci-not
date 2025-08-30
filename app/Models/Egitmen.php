@@ -14,6 +14,9 @@ class Egitmen extends Model
 
     protected $fillable = [
         'ad_soyad',
+        'egitmen_no',
+        'telefon_numarasi',
+        'okul_email',
     ];
 
     public function dersler(): HasMany

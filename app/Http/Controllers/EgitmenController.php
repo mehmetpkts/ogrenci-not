@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Egitmen;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class EgitmenController extends Controller
 {
@@ -27,6 +28,9 @@ class EgitmenController extends Controller
     {
         $data = $request->validate([
             'ad_soyad' => ['required', 'string', 'max:255'],
+            'egitmen_no' => ['required', 'string', 'max:50', 'unique:egitmenler,egitmen_no'],
+            'telefon_numarasi' => ['required', 'string', 'max:11'],
+            'okul_email' => ['required', 'string', 'email', 'max:255', 'unique:egitmenler,okul_email'],
         ]);
 
         $egitmen = Egitmen::create($data);
@@ -42,6 +46,9 @@ class EgitmenController extends Controller
     {
         $data = $request->validate([
             'ad_soyad' => ['required', 'string', 'max:255'],
+            'egitmen_no' => ['required', 'string', 'max:50', Rule::unique('egitmenler', 'egitmen_no')->ignore($egitmen->id)],
+            'telefon_numarasi' => ['required', 'string', 'max:11'],
+            'okul_email' => ['required', 'string', 'email', 'max:255', Rule::unique('egitmenler', 'okul_email')->ignore($egitmen->id)],
         ]);
 
         $egitmen->update($data);

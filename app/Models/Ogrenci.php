@@ -14,6 +14,9 @@ class Ogrenci extends Model
 
     protected $fillable = [
         'ad_soyad',
+        'ogrenci_no',
+        'telefon_numarasi',
+        'okul_email',
     ];
 
     public function notlar(): HasMany
