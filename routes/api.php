@@ -29,24 +29,23 @@ Route::group([
 
 Route::group([
   'middleware' => 'auth:api'
-], function () {
+], function () {});
 
-  Route::apiResource('egitmenler', EgitmenController::class)->parameters([
-    'egitmenler' => 'egitmen',
-  ]);
+Route::apiResource('egitmenler', EgitmenController::class)->parameters([
+  'egitmenler' => 'egitmen',
+]);
 
-  Route::apiResource('ogrenciler', OgrenciController::class)->parameters([
-    'ogrenciler' => 'ogrenci',
-  ]);
+Route::apiResource('ogrenciler', OgrenciController::class)->parameters([
+  'ogrenciler' => 'ogrenci',
+]);
 
-  Route::apiResource('dersler', DersController::class)->parameters([
-    'dersler' => 'ders',
-  ]);
+Route::apiResource('dersler', DersController::class)->parameters([
+  'dersler' => 'ders',
+]);
 
-  // Alias: birimler -> dersler index
-  Route::get('birimler', [DersController::class, 'index']);
+// Alias: birimler -> dersler index
+Route::get('birimler', [DersController::class, 'index']);
 
-  Route::apiResource('notlar', NotController::class)->parameters([
-    'notlar' => 'not',
-  ]);
-});
+Route::apiResource('notlar', NotController::class)->parameters([
+  'notlar' => 'not',
+]);

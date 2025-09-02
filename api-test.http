@@ -127,8 +127,8 @@ POST {{baseUrl}}/notlar
 Content-Type: {{json}}
 
 {
-  "ogrenci_id": 3,
-  "ders_id": 3,
+  "ogrenci_id": 1,
+  "ders_id": 1,
   "not": 85
 }
 
